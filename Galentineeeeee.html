@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Be My Galentine 💗</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom right, #ffd6ec, #ffe6f5);
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Heading */
+h1 {
+  margin-top: 120px;
+  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  color: #e60073;
+  letter-spacing: 1px;
+}
+
+/* Subheading */
+h2 {
+  font-weight: 400;
+  color: #ff4da6;
+  margin-bottom: 30px;
+}
+
+/* Buttons */
+button {
+  padding: 14px 38px;
+  font-size: 18px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+#yesBtn {
+  background-color: #ff4da6;
+  color: white;
+  box-shadow: 0 8px 20px rgba(255, 77, 166, 0.3);
+}
+
+#yesBtn:hover {
+  transform: translateY(-3px);
+}
+
+#noBtn {
+  background-color: #ffb3d9;
+  color: white;
+}
+
+#finalMessage {
+  display: none;
+  font-size: 20px;
+  margin: 50px auto;
+  max-width: 600px;
+  color: #cc0066;
+  line-height: 1.9;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating hearts */
+.float {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will You Be My Galentine? 💗</h1>
+<h2>Warning: Saying no might be difficult 😌✨</h2>
+
+<button id="yesBtn" onclick="sayYes()">Yes 💖</button>
+<button id="noBtn" onclick="moveNo()">No 🙈</button>
+
+<div id="finalMessage">
+🎀 Happy Galentine’s Day 💗✨<br><br>
+
+To strong women with soft hearts,  
+big dreams, and unstoppable glow.<br><br>
+
+May we always support each other,  
+celebrate loudly,  
+and grow beautifully together 💕<br><br>
+
+Best decision ever clicking YES 😌💖
+</div>
+
+<!-- Background Music -->
+<audio id="bgmusic" loop>
+  <source src="your-music-file.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+function sayYes() {
+  document.getElementById("bgmusic").play();
+  document.getElementById("yesBtn").style.display = "none";
+  document.getElementById("noBtn").style.display = "none";
+  document.getElementById("finalMessage").style.display = "block";
+}
+
+function moveNo() {
+  let noBtn = document.getElementById("noBtn");
+  noBtn.style.position = "absolute";
+  noBtn.style.top = Math.random() * window.innerHeight + "px";
+  noBtn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+/* Floating hearts */
+setInterval(() => {
+  let float = document.createElement("div");
+  float.classList.add("float");
+
+  let emojis = ["💗","✨","🎀","💖"];
+  float.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+  float.style.left = Math.random() * 100 + "vw";
+  float.style.fontSize = (16 + Math.random()*12) + "px";
+
+  document.body.appendChild(float);
+
+  setTimeout(() => {
+    float.remove();
+  }, 8000);
+
+}, 700);
+
+</script>
+
+</body>
+</html>
